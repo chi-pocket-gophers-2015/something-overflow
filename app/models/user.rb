@@ -10,18 +10,12 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :first_name, presence: true
 
-  def self.create(user_credentials)
-    @user = User.new(user_credentials)
-    @user.password = user_credentials[:password]
-    @user.save
-  end
-
-  def self.authenticate (user_credentials)
+  def self.authenticate(user_credentials)
     current_user = User.find_by_username(user_credentials[:username])
-    if current_user
-      current_user.password == user_credentials[:password]
+    if current_user && current_user.password == user_credentials[:password]
+      current_user
     else
-      false
+      nil
     end
   end
 

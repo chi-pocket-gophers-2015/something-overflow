@@ -3,18 +3,25 @@ get '/' do
   erb :dummy_home
 end
 
+get '/login' do
+  erb :login
+end
+
 post '/login' do
-  @user = User.authenticate(params[:user])
-  if @user
-    store_user_login(@user) #helper
+  user = User.authenticate(params[:user])
+  if user
+    store_user_login(user) #helper
     redirect to "/home" #<-whatever user's profile/homepage is
   else
-    loutout_user #helper
-    redirect to "/login"
+    # logout_user #helper
+    # redirect to "/login"
+
+    @errors = "Sorry try again."
+    erb :login
   end
 end
 
-post '/logout' do
+get '/logout' do
   logout_user #helper
   redirect to "/"
 end
@@ -30,7 +37,7 @@ end
 
 post '/signup' do
   new_user = User.create(params[:user])
-  if new_user.save
+  if new_user.valid?
     redirect to "/login"
   else
     #set_error(new_user.errors.mesages) #helper -

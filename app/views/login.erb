@@ -1,15 +1,16 @@
 <div class = "container">
   <h3>Login</h3>
   <hr>
-<!--   < if params[:failure] >
-    <h5 style="color: red">Incorrect Email/Password combination</h5>
-  < end > -->
+
+  <% if @errors  %>
+    <%= @errors %>
+  <% end %>
+
   <form action ="/login" method = "post">
-    <input type="text" name="user[email]" placeholder="email address">
-    <input type="text" name="user[first_name]" placeholder="first name">
-    <input type="text" name="user[last_name]" placeholder="last name">
     <input type="text" name="user[username]" placeholder="username">
     <input type="password" name="user[password]" placeholder="password">
     <input type="submit" value="login">
   </form>
+
+  <p>Don't have an account yet? <a href="/signup">sign up here</a></p>
 </div>

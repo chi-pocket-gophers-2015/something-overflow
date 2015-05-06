@@ -22,9 +22,14 @@
       <div id = "header-title"><h1>Stack Gameofthrone</h1></div>
       <div id = "header-options">
         <ul>
-          <li><a href="#">home</a></li>
-          <li><a href="#">topics</li></a>
-          <li><a href="#">some option</a></li>
+          <li><a href="/home">home</a></li>
+          <% if !logged_in? %>
+            <li><a href="/signup">sign up</a></li>
+            <li><a href="/login">login</a></li>
+          <% else %>
+            <li> Sup, <%= current_user.first_name %>
+            <li><a href="/logout">log out</a></li>
+          <% end %>
         </ul>
       </div>
     </div>

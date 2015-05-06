@@ -58,7 +58,7 @@ body {
 
 a {
   text-decoration: none;
-  color: white;
+  color: purple;
 }
 
 a:hover {
@@ -92,4 +92,9 @@ td form {
   padding: 5px;
   text-decoration: none;
   width: 100px;
+}
+
+.red-asterisk {
+  display: inline;
+  color: red;
 }
