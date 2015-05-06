@@ -3,10 +3,6 @@ get '/' do
   erb :'questions/index'
 end
 
-get '/questions' do
-  @questions = Question.all
-  erb :'questions/index'
-end
 
 get '/login' do
   erb :login
@@ -49,3 +45,4 @@ post '/signup' do
     redirect to "/signup"
   end
 end
+

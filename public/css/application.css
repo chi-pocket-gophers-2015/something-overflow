@@ -90,6 +90,11 @@ td form {
   width: 100px;
 }
 
+
+.errors {
+  color: red;
+}
+
 .red-asterisk {
   display: inline;
   color: red;
@@ -128,3 +133,4 @@ td form {
 #about-me {
   height: 4em;
 }
+
