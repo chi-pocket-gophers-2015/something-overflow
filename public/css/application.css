@@ -41,6 +41,22 @@
   font-size: 15px;
 }
 
+.add_comment_link {
+  margin: 78px;
+  clear: both;
+  font-size: 13px;
+}
+
+.add_comment_link a:link, a:visited {
+  color: #888;
+  text-decoration: none;
+}
+
+.add_comment_link a:hover {
+  color: #A9D2F0;
+  text-decoration: none;
+}
+
 table {
   margin-bottom: 20px;
 }
@@ -73,6 +89,12 @@ table {
 
 .question_body {
   margin-left: 60px;
+}
+
+.answers_heading {
+  font-size: 18px;
+  border-bottom: 1px solid #C7C7C7;
+
 }
 
 /* HUYYYYYYY */
