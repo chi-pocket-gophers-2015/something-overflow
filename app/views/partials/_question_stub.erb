@@ -1,8 +1,14 @@
 <!-- displays a single question stub (consisting of link to individual question page,
 author, votes, answers, views, and tags) -->
-
+<%=%>
+<%%>
 <div class="question_stub">
-  <div class="question_stub_votes">Votes</div>
+
+  <div class="question_stub_votes">
+    Votes
+    <div><%= tally_votes(question) %></div>
+  </div>
+
   <div class="question_stub_summary">
     Summary
     <h3><a href="/questions/:id">Question.title</a></h3>
