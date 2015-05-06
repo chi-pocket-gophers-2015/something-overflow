@@ -1,0 +1,7 @@
+<form action="<%=path%>" method="post">
+  <input type="hidden" name="_method" value="<%=method%>">
+  <p><input type="text" name="question[title]" placeholder="Enter Question title" value="<%=question.title%>"></p>
+  <p><textarea name="question[body]" placeholder="Enter question here" rows="20" cols="80"><%=question.body%></textarea></p>
+  <p><input type="text" name="question[tags]" placeholder="Enter Tags, seperated by spaces" size="50" value="<%=question.tags.to_a.join(" ")%>"></p>
+  <p><input type="submit" value="Submit"></p>
+</form>
