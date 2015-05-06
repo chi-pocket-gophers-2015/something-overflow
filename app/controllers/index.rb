@@ -1,6 +1,11 @@
 get '/' do
-  # erb :index
-  erb :dummy_home
+  @questions = Question.all
+  erb :'questions/index'
+end
+
+get '/questions' do
+  @questions = Question.all
+  erb :'questions/index'
 end
 
 get '/login' do
