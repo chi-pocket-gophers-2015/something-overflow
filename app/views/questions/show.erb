@@ -35,16 +35,70 @@
 
       <div>
         <div class="author_details">
-          <span>asked on #date</span>
-          <span class="username"><img src="/pikachu.png" alt="author profile picture" />
-          #Some user</span>
+          <span>asked on <%= @question.created_at.strftime("%m/%d/%Y") %></span>
+          <span class="username">
+            <a href="/user/<%= @question.author.id %>">
+              <img src="/pikachu.png" alt="author profile picture" />
+              <%= @question.author.username %>
+            </a>
+          </span>
         </div>
       <div>
 
       <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
 
+      <div class="question_comments">
+        <% @question.comments do |comment| %>
+        <span><%= comment.body %> #Author name # Date</span>
+        <span><%= @comments.last.body %>#Author name # Date</span>
+        <% end %>
+      </div>
+
       <div class="answers_heading">#2 Answers
          | #Sorting links: active, oldest, votes
+      </div>
+
+
+
+
+
+      <!-- Need to refactor to not double the code -->
+      <!-- iterate through each first for all answers -->
+
+
+
+
+      <div class="question">
+        <div class="question_votes"><img src="/temp_vote.png" /></div>
+        <div class="question_body"><%= @answer.first.body %></div>
+      </div>
+
+      <div>
+        <div class="author_details">
+          <span>answered on <%= @answer.first.created_at.strftime("%m/%d/%Y") %></span>
+          <span class="username">
+            <a href="/user/<%= @answer.first.author.id %>">
+              <img src="/pikachu.png" alt="author profile picture" />
+              <%= @answer.first.author.username %></span>
+          </a>
+        </div>
+      <div>
+
+      <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+
+      <div class="question_comments">
+        #interpolate all comments
+        <span><%= @comments.first.body %> #Author name # Date</span>
+        <span><%= @comments.last.body %>#Author name # Date</span>
+      </div>
+
+      <div class="add_answer">
+        <p>Your Answer</p>
+        <form action="##" method="POST">
+          <textarea></textarea>
+          <button>Post Your Answer</button>
+          <a href="#">#Discard</a>
+        </form>
       </div>
 
     </div>
