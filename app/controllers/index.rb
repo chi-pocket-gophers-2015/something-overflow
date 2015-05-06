@@ -1,5 +1,6 @@
 get '/' do
-  erb :index
+  # erb :index
+  erb :dummy_home
 end
 
 post '/login' do
@@ -9,7 +10,7 @@ post '/login' do
     redirect to "/home" #<-whatever user's profile/homepage is
   else
     loutout_user #helper
-    redirect to "/login?failure=1"
+    redirect to "/login"
   end
 end
 

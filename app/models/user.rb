@@ -14,11 +14,12 @@ class User < ActiveRecord::Base
     @user = User.new(user_credentials)
     @user.password = user_credentials[:password]
     @user.save
+  end
 
   def self.authenticate (user_credentials)
     current_user = User.find_by_username(user_credentials[:username])
     if current_user
-      current_user.password == params[:password]
+      current_user.password == user_credentials[:password]
     else
       false
     end
