@@ -20,18 +20,18 @@ $(document).ready(function() {
   });
 
   // $('form').submit(function(){});
-  $('body').on('submit', 'form', function(event) {
-  	event.preventDefault();
+  // $('body').on('submit', 'form', function(event) {
+  // 	event.preventDefault();
 
-  	var request = $.ajax({
-  		url: 'contacts',
-  		method: 'POST',
-  		data: $(this).serialize()
-  	});
+  // 	var request = $.ajax({
+  // 		url: 'contacts',
+  // 		method: 'POST',
+  // 		data: $(this).serialize()
+  // 	});
 
-  	request.done(function(response){
-  		$('tbody').append(response);
-  	});
+  // 	request.done(function(response){
+  // 		$('tbody').append(response);
+  // 	});
 
-  });
+  // });
 });

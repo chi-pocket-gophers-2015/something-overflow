@@ -54,7 +54,7 @@ body {
 
 a {
   text-decoration: none;
-  color: white;
+  color: purple;
 }
 
 a:hover {
@@ -90,6 +90,11 @@ td form {
   width: 100px;
 }
 
+.red-asterisk {
+  display: inline;
+  color: red;
+}
+
 /*-------------jims shit profile blah blah blah--------------*/
 /*.container {
   border: 1px solid black;
@@ -123,13 +128,3 @@ td form {
 #about-me {
   height: 4em;
 }
-
-
-
-
-
-
-
-
-
-
