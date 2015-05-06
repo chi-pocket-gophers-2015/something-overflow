@@ -171,10 +171,63 @@ body {
   margin: 0;
 }
 
-.header-bar {
+.header-global-container {
   display: block;
-  background-color: black;
+  background-color: gray;
+  width: 100%;
   height: 4em;
+}
+.header-contents {
+  display: inline-block;
+  width: 100%;
+  height: inherit;
+  vertical-align: middle;
+}
+
+#header-title {
+  display: inline-block;
+  height: inherit;
+  width: 70%;
+  color: white;
+  text-align: center;
+}
+
+#header-title > h1 {
+  margin: 0;
+  padding-top: 1%;
+  height: inherit;
+}
+
+#header-options {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+  float: right;
+  width: 29.%;
+  padding-right: 10%;
+}
+#header-options > ul {
+  margin: 0;
+  list-style: none;
+  float: right;
+  padding-top: 1em;
+  font-size: 1.3em;
+}
+#header-options > ul > li {
+  display: inline-block;
+  height: inherit;
+  padding-right: 1em;
+  color: white;
+  font-weight: lighter;
+}
+
+a {
+  text-decoration: none;
+  color: purple;
+}
+
+a:hover {
+  color: #999999;
 }
 
 main {
@@ -205,3 +258,48 @@ td form {
   text-decoration: none;
   width: 100px;
 }
+
+
+.errors {
+  color: red;
+}
+
+.red-asterisk {
+  display: inline;
+  color: red;
+}
+
+/*-------------jims shit profile blah blah blah--------------*/
+/*.container {
+  border: 1px solid black;
+}*/
+.profile-container {
+  position: relative;
+}
+
+
+
+.user-info {
+  padding: 3em;
+  height: 35em;
+  background-color: #f4f4f4;
+}
+
+#user-pic {
+  width: 8em;
+  height: 10em;
+  display: inline-block;
+  background-color: #969696;
+  text-align: center;
+}
+.user-info-container {
+  display: inline-block;
+  float: right;
+  width: 60%;
+  text-align: left;
+}
+
+#about-me {
+  height: 4em;
+}
+
