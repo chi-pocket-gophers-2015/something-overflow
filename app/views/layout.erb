@@ -20,15 +20,14 @@
 <body>
   <nav class = "header-global-container">
     <div class = "header-contents">
-      <div id = "header-title"><h1>Stack Gameofthrone</h1></div>
+      <div id = "header-title"><a style="color: white" href="/"><h1>Stack Gameofthrone</h1></a></div>
       <div id = "header-options">
         <ul>
-          <li><a href="/home">home</a></li>
           <% if !logged_in? %>
             <li><a href="/signup">sign up</a></li>
             <li><a href="/login">login</a></li>
           <% else %>
-            <li> Sup, <%= current_user.first_name %>
+            <li> Sup, <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
             <li><a href="/logout">log out</a></li>
           <% end %>
         </ul>
