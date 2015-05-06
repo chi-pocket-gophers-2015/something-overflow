@@ -1,5 +1,5 @@
 get '/' do
-  erb :index
+  erb :'questions/index'
 end
 
 get '/questions' do

@@ -1,5 +1,10 @@
 <!-- Displays all questions -->
+<br>
+<div style="border-top: 1px solid black">
+
 <% @questions.each do |question| %>
 <%= erb :'partials/_question_stub', locals: {question: question} %>
+<br> <!-- replace this with css in the question stub eventually -->
 <% end %>
 
+</div>
