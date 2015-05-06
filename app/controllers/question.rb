@@ -11,5 +11,10 @@ get '/questions/new' do
 end
 
 post '/questions/new' do
-  "Hello World"
+  @question = Question.new(params[:question])
+  if @question.save
+    redirect("/")
+  else
+    erb :'/questions/new'
+  end
 end

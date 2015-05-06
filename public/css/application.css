@@ -93,3 +93,7 @@ td form {
   text-decoration: none;
   width: 100px;
 }
+
+.errors {
+  color: red;
+}
