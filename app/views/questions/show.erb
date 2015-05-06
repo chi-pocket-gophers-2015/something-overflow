@@ -1,12 +1,26 @@
 <div class="container">
   <div class="title">
-    <h2 id="question_title"><%= @question.title %></h2>
+    <h2 class="question_title"><%= @question.title %></h2>
   </div>
 
   <div class="body">
 
     <div class="sidebar">
-      h
+      <table>
+        <tr>
+          <td class="stats">asked</td>
+          <td>date</td>
+        </tr>
+        <tr>
+          <td class="stats">viewed</td>
+          <td>999 times</td>
+        </tr>
+        <tr>
+          <td class="stats">active</td>
+          <td>now</td>
+        </tr>
+      </table>
+      <img src="/ads/sidebar.png" />
     </div>
 
     <div class="main_content">
@@ -19,7 +33,10 @@
         <div class="question_body"><%= @question.body %></div>
       </div>
 
-
+      <div class="author_details">
+        <span>asked on #date</span>
+        <span><img src="/pikachu.png" alt="author profile picture" /></span>
+      </div>
 
     </div>
 
