@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   // $('form').submit(function(){});
   $('body').on('submit', 'form', function(event) {
-  	event.preventDefault();
+  	// event.preventDefault();
 
   	var request = $.ajax({
   		url: 'contacts',
