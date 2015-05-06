@@ -57,55 +57,57 @@
         <% end %>
       </div>
 
-      <div class="answers_heading">
-        <table>
-          <tr>
-            <% if @question.answers.length == 1 %>
-              <td><%= @question.answers.length %> Answer</td>
-            <% else %>
-              <td><%= @question.answers.length %> Answers</td>
-            <% end %>
-            <td id="sorting_class">#oldest, votes</td>
-          </tr>
-        </table>
-      </div>
-
-
-
-      <!-- Need to refactor to not double the code -->
-      <!-- iterate through each first for all answers -->
-
-
-      <% @question.answers.each do |answer| %>
-        <div class="question">
-          <div class="question_votes"><img src="/temp_vote.png" /></div>
-          <div class="question_body"><%= answer.body %></div>
+      <% if @question.answers %>
+        <div class="answers_heading">
+          <table>
+            <tr>
+              <% if @question.answers.length == 1 %>
+                <td><%= @question.answers.length %> Answer</td>
+              <% else %>
+                <td><%= @question.answers.length %> Answers</td>
+              <% end %>
+              <td id="sorting_class">#oldest, votes</td>
+            </tr>
+          </table>
         </div>
 
-        <div>
-          <div class="author_details">
-            <span>answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %></span>
-            <span class="username">
-              <a href="/users/<%= answer.author.id %>">
-                <img src="/pikachu.png" alt="author profile picture" />
-                <%= answer.author.username %></span>
-            </a>
+
+
+        <!-- Need to refactor to not double the code -->
+        <!-- iterate through each first for all answers -->
+
+
+        <% @question.answers.each do |answer| %>
+          <div class="question">
+            <div class="question_votes"><img src="/temp_vote.png" /></div>
+            <div class="question_body"><%= answer.body %></div>
           </div>
-        <div>
 
-        <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+          <div>
+            <div class="author_details">
+              <span>answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %></span>
+              <span class="username">
+                <a href="/users/<%= answer.author.id %>">
+                  <img src="/pikachu.png" alt="author profile picture" />
+                  <%= answer.author.username %></span>
+              </a>
+            </div>
+          <div>
 
-        <div class="question_comments">
-          <% answer.comments.each do |comment| %>
-          <span>
-            <%= comment.body %>
-            <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
-            <%= comment.updated_at.strftime("%b %d") %>
-            at
-            <%= comment.updated_at.strftime("%R") %>
-          </span>
-          <% end %>
-        </div>
+          <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+
+          <div class="question_comments">
+            <% answer.comments.each do |comment| %>
+            <span>
+              <%= comment.body %>
+              <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
+              <%= comment.updated_at.strftime("%b %d") %>
+              at
+              <%= comment.updated_at.strftime("%R") %>
+            </span>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
       <div class="add_answer">
         <p>Your Answer</p>
