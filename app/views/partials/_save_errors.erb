@@ -1,6 +1,6 @@
-<% if model.errors %>
+<% if object.errors %>
   <ul class="errors">
-  <% model.errors.full_messages.each do |message| %>
+  <% object.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
   </ul>

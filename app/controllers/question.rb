@@ -12,12 +12,13 @@ get '/questions/new' do
 end
 
 post '/questions/new' do
+  # params.inspect
   @question = Question.new(params[:question])
   @question.author = current_user
 
   if @question.save
-    redirect("/")
+    redirect("/questions/#{@question.id}")
   else
-    erb :'/questions/new'
+    erb :'questions/new'
   end
 end
