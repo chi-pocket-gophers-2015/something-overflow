@@ -23,6 +23,7 @@ $(document).ready(function() {
   // $('body').on('submit', 'form', function(event) {
   // 	event.preventDefault();
 
+
   // 	var request = $.ajax({
   // 		url: 'contacts',
   // 		method: 'POST',
@@ -32,6 +33,6 @@ $(document).ready(function() {
   // 	request.done(function(response){
   // 		$('tbody').append(response);
   // 	});
-
   // });
+
 });

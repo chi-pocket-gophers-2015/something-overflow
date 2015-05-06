@@ -1,3 +1,172 @@
+.question_title {
+  font-size: 28px;
+  font-weight: normal;
+  border-bottom: 1px solid #C7C7C7;
+  padding: 15px 0;
+}
+
+* {
+  color: #272727;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 1000px;
+}
+
+.sidebar td {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.author_details {
+  background-color: #E0EAF1;
+  float: right;
+  width: 200px;
+  height: 68px;
+}
+
+#author_details_answers {
+  background-color: white;
+}
+
+.author_details img {
+  display: inline;
+}
+
+.author_details a:link, a:visited {
+  color: #0c65a5;
+  text-decoration: none;
+  vertical-align: top;
+}
+
+.author_details a:hover {
+  color: #07c;
+}
+
+.author_details span {
+  display: block;
+  font-size: 13px;
+  margin: 5px 5px;
+  vertical-align: top;
+}
+
+.author_details img {
+  width: 35px;
+  height: 35px;
+}
+
+.author_details .username {
+  font-size: 15px;
+}
+
+.add_comment_link, .question_taggings {
+  margin: 25px 78px;
+  clear: right;
+  font-size: 13px;
+}
+
+.question_taggings span {
+  background-color: #E4EDF4;
+  padding: 6px;
+}
+
+.question_taggings a:link, a:visited {
+  font-weight: 300;
+  color: #3E6D8E;
+  text-decoration: none;
+}
+
+
+
+.add_comment_link a:link, a:visited {
+  color: #888;
+  text-decoration: none;
+}
+
+.add_comment_link a:hover {
+  color: #A9D2F0;
+  text-decoration: none;
+}
+
+table {
+  margin-bottom: 20px;
+}
+
+.stats {
+  width: 25%;
+  color: #808080;
+}
+
+.sidebar {
+  float: right;
+  width: 225px;
+  /*border: 1px solid black;*/
+}
+
+.main_content {
+  float: left;
+  width: 728px;
+  /*border: 1px solid black;*/
+}
+
+.question {
+  /*border: 1px solid black;*/
+  margin: 15px;
+}
+
+.question_votes {
+  float: left;
+}
+
+.question_body {
+  margin-left: 60px;
+}
+
+.answers_heading {
+  font-size: 18px;
+  border-bottom: 1px solid #C7C7C7;
+  padding-bottom: 15px;
+  margin-bottom: 40px;
+}
+
+.question_comments {
+  margin-left: 75px;
+  margin-bottom: 30px;
+  font-size: 13px;
+}
+
+.question_comments span {
+  display: block;
+  padding: 10px 0 10px 30px;
+  border-top: 1px solid #C7C7C7;
+  border-bottom: 1px solid #C7C7C7;
+}
+
+.add_answer p {
+  font-size: 18px;
+}
+
+.add_answer textarea {
+  width: 660px;
+  height: 226px;
+}
+
+.add_answer button {
+  background-color: #009afd;
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 7px 13px;
+  margin: 20px 0;
+}
+
+#sorting_class {
+  width: 17%;
+}
+
+/* HUYYYYYYY */
+
 body {
   margin: 0;
 }
@@ -90,6 +259,11 @@ td form {
   width: 100px;
 }
 
+
+.errors {
+  color: red;
+}
+
 .red-asterisk {
   display: inline;
   color: red;
@@ -128,3 +302,4 @@ td form {
 #about-me {
   height: 4em;
 }
+
