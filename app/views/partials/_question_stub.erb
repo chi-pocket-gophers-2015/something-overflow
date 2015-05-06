@@ -1,23 +1,26 @@
 <!-- displays a single question stub (consisting of link to individual question page,
 author, votes, answers, views, and tags) -->
+<%= %>
+<%%>
 
 <div class="question_stub">
 
   <div class="question_stub_votes">
-    Votes
-    <div><%= tally_votes(question) %></div>
+    <div>Votes: <%= tally_votes(question) %></div>
+    <div>Answers:  <%= question.answers.count %> </div>
   </div>
 
   <div class="question_stub_summary">
     Summary
-    <h3><a href="/questions/:id">Question.title</a></h3>
+    <h3><a href="/questions/:id"><%= question.title %></a></h3>
 
     <div class="question_stub_author">
-      Posted by <a href="/users/:id"> Question.author</a>
+      Posted by <a href="/users/:id"> <%= question.author.first_name %> </a>
     </div>
 
     <div>
       <ul class="question_stub_tag_list">
+        <li> <a href="#"> dummy_tag </a> </li>
         <li> Question.tags </li>
       </ul>
     </div>

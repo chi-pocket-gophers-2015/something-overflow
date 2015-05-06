@@ -11,8 +11,14 @@
 
 }
 
-.question_stub_tag_list {
+.question_stub_tag_list li{
   /*clear: right;*/
+  display: inline;
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px;
+  background: #DAE6EF;
+  color: #659ACD;
 }
 
 .question_stub a {
@@ -26,6 +32,10 @@
 .question_stub_votes {
   float: left;
   width: 30%;
+}
+
+.question_stub_votes>div{
+  display: inline-block;
 }
 
 .question_stub_summary {
