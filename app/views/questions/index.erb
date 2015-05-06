@@ -1,7 +1,5 @@
 <!-- Displays all questions -->
-<%=%>
-<%%>
-
 <% @questions.each do |question| %>
-<%= erb :'partials/_question_stub', locals: {:question question} %>
+<%= erb :'partials/_question_stub', locals: {question: question} %>
 <% end %>
+
