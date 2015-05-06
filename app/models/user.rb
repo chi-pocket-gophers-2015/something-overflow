@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
+  def question_from_answer(auth_id)
+    Question.find_by_id(auth_id)
+  end
+
 end

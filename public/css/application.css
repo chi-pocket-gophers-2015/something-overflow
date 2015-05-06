@@ -2,10 +2,6 @@ body {
   margin: 0;
 }
 
-/** {
-  border: 1px solid black;
-}*/
-
 .header-global-container {
   display: block;
   background-color: gray;
@@ -97,4 +93,38 @@ td form {
 .red-asterisk {
   display: inline;
   color: red;
+}
+
+/*-------------jims shit profile blah blah blah--------------*/
+/*.container {
+  border: 1px solid black;
+}*/
+.profile-container {
+  position: relative;
+}
+
+
+
+.user-info {
+  padding: 3em;
+  height: 35em;
+  background-color: #f4f4f4;
+}
+
+#user-pic {
+  width: 8em;
+  height: 10em;
+  display: inline-block;
+  background-color: #969696;
+  text-align: center;
+}
+.user-info-container {
+  display: inline-block;
+  float: right;
+  width: 60%;
+  text-align: left;
+}
+
+#about-me {
+  height: 4em;
 }
