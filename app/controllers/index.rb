@@ -20,7 +20,7 @@ post '/login' do
       store_user_login(user)
       erb :'partials/_login_success', layout: false
     else
-      "bye"
+      erb :'partials/_login_fail', layout: false
     end
   else
     if user

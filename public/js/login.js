@@ -24,7 +24,7 @@ $(document).ready(function() {
       request.done(function(response){
         console.log(response);
         $('.login_box').parent().append(response);
-        $('#signup_link').parent().hide();
+        $('#signup_link').parent().remove();
       });
     });
   });
