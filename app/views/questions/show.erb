@@ -77,7 +77,7 @@
         <div>
           <%= comment.body %>
           <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
-          <%= comment.updated_at.strftime("%b %d") %> at <%= comment.updated_at.strftime("%R") %>
+          <!-- <%= comment.updated_at.strftime("%b %d") %> at <%= comment.updated_at.strftime("%R") %>  -->
             <% if current_user.id == comment.author.id %>
                 <span id="edit_content">
                   <a href="/comments/edit/<%= comment.id %>">edit</a>
@@ -138,10 +138,33 @@
           </div>
         </div>
         <div class="add-comment-button"><a href="/questions/#{@question.id}/answers/#{answer.id}/reply">add a comment</a></div>
-      <% end %>
-
+<!-- this is the start of the problem -->
+        <% answer.comments.each do |comment| %>
+          <div class="question-comments-buffer">
+            <div class="question-comments-container">
+              <div class= "a-comment-body">
+                <%= comment.body %>
+                <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
+                <%= comment.updated_at.strftime("%b %d") %>
+                at
+                <%= comment.updated_at.strftime("%R") %>
+                <% if current_user.id == comment.author.id %>
+                  <div id="a-comment-edit">
+                    <a href="/comments/edit/<%= comment.id %>">
+                      edit
+                    </a>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+<!-- this is the end -->
       </div>
 
+
+  <% end %>
+      <!-- line above is end of div for answer container -->
       <% if logged_in? %>
       <div class="add_answer">
         <p>Your Answer</p>
