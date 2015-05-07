@@ -3,8 +3,8 @@ author, votes, answers, views, and tags) -->
 <div class="question_stub">
 
   <div class="question_stub_votes">
-    <div>Votes: <%= tally_votes(question) %></div>
-    <div>Answers:  <%= question.answers.count %> </div>
+    <div><span class="upvote-color">Votes:</span> <%= tally_votes(question) %></div>
+    <div><span class="downvote-color">Answers: </span> <%= question.answers.count %> </div>
   </div>
 <div class="question_stub_details">
   <div class="question_stub_title">
