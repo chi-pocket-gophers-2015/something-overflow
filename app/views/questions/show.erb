@@ -83,10 +83,10 @@
         <% end %>
       </div>
 
-      <!-- everything is clean and beautiful above this line -->
 
 
 
+<!-- START ANSWERS WITH HEADER -->
       <% if @question.answers %>
       <div class="answers-global-container">
         <div class="answers-header">
@@ -131,8 +131,7 @@
             </div>
             </a>
           </div>
-
         </div>
-        <div class="add-comment-button"><a href="/answers/new">add a comment</a></div>
+        <div class="add-comment-button"><a href="/questions/#{@question.id}/answers/#{answer.id}/reply">add a comment</a></div>
         <% end %>
 </div>

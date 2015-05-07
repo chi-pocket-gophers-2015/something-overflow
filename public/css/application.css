@@ -1,6 +1,6 @@
 body {
   background-color: #F6F6F6;
-  padding-bottom: 30%;
+  /*padding-bottom: 30%;*/
 }
 a {
   text-decoration: none;
@@ -11,7 +11,7 @@ a {
 }
 
 a:hover {
-  /*transform:scale(1.12);*/
+  transform:scale(1.12);
   color: #999999;
 }
 
@@ -177,7 +177,7 @@ table {
 }
 
 /* --------HEADER--------- */
-=======
+
 /*#edit_content {*/
   /*background-color: #30A7FC;*/
   /*padding: 4px 4px 4px 3px;*/
@@ -390,7 +390,7 @@ td form {
 
 .body-container {
   display: inline-block;
-  max-height: 15em;
+  /*max-height: 15em;*/
   /*margin-left: 15%;*/
 }
 
@@ -541,8 +541,16 @@ td form {
   font-weight: 100;
   color: #C1C1C1;
   margin-top: 1em;
+  transition:background-color .1s ease-out;
 }
 
+.add-comment-button > a:hover {
+  color: #ffffff;
+}
+
+.add-comment-button:hover {
+  background-color: #888888;
+}
 
 /*------------------------------------*/
 
