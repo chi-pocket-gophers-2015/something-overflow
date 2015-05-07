@@ -1,5 +1,5 @@
 <div>
-  <h3>New Question</h2>
+  <h3>Edit Question</h2>
     <div class="errors"><%= erb :'partials/_save_errors', locals: { object: @question } %></div>
     <%= erb :'partials/_question_form', locals: {path: @path, method: @method, question: @question} %>
 </div>
