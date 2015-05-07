@@ -20,25 +20,20 @@
           <td>now</td>
         </tr>
       </table>
-      <img src="/ads/sidebar.png" />
     </div>
 
     <div class="main_content">
 
       <div class="question">
-        <!-- jhsgklfhkdljsfkjHJKAHSDKFSJKDAHFJKhhfjdksahfjkajgncjafsjkdf -->
         <div class="up-down-container">
-          <a href="/upvote/<%=@question.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
-          <div class="upvote-count"><%=@question.votes.count%></div>
-          <a href="/downvote/<%=@question.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
+          <a href="/upvote/<%=@question.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
+          <div class="upvote-count"><%=tally_votes(@question)%></div>
+          <a href="/downvote/<%=@question.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div>
         </div>
         <div class="body-container">
             <div class="question_body"><%= @question.body %></div>
         </div>
-
       </div>
-
-        <!-- DHSAIGHIUEWDNJSKVLJIUERALNDKFSHVBSDIZXJGKSDBVFHNVB  -->
 
 
       <div class="question_taggings">
@@ -47,12 +42,11 @@
       </div>
 
       <div>
-        <% if current_user.id == @question.author_id %>
+        <% if current_user_id == @question.author_id %>
           <span id="edit_answer">
             <a href="/questions/edit/<%= @question.id %>">
-              edit
+              <div class="edit_question">edit</div>
             </a>
-          </span>
         <% end %>
         <div class="author_details">
           <span>asked <%= @question.created_at.strftime("%b %d") %> at <%= @question.created_at.strftime("%R") %></span>
@@ -109,7 +103,11 @@
 
         <% @question.answers.each do |answer| %>
           <div class="question">
-            <div class="question_votes"><img src="/temp_vote.png" /></div>
+            <div class="up-down-container">
+              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <div class="upvote-count"><%=tally_votes(answer)%></div>
+              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
+            </div>
             <div class="question_body"><%= answer.body %></div>
           </div>
 
