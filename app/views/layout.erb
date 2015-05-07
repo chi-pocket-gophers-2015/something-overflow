@@ -11,6 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/question_stub.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -18,7 +19,19 @@
 </head>
 <body>
   <nav class = "header-global-container">
-    <div class="header-bar">
+    <div class = "header-contents">
+      <div id = "header-title"><a style="color: white" href="/"><h1>Stack Gameofthrone</h1></a></div>
+      <div id = "header-options">
+        <ul>
+          <% if !logged_in? %>
+            <li><a href="/signup">sign up</a></li>
+            <li><a href="/login">login</a></li>
+          <% else %>
+            <li> Sup, <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
+            <li><a href="/logout">log out</a></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
   <main>

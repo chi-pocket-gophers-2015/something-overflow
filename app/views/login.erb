@@ -1,0 +1,16 @@
+<div class = "container">
+  <h3>Login</h3>
+  <hr>
+
+  <% if @errors  %>
+    <%= @errors %>
+  <% end %>
+
+  <form action ="/login" method = "post">
+    <input type="text" name="user[username]" placeholder="username">
+    <input type="password" name="user[password]" placeholder="password">
+    <input type="submit" value="login">
+  </form>
+
+  <p>Don't have an account yet? <a href="/signup">sign up here</a></p>
+</div>
