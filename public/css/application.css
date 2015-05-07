@@ -378,6 +378,10 @@ td form {
   margin-bottom: 2em;
 }
 
+.header > h4 {
+  float: right;
+  display: inline;
+}
 
 /*-------------------*/
 

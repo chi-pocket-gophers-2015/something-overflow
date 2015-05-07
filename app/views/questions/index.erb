@@ -1,6 +1,9 @@
 <!-- Displays all questions -->
 <div class="feed-container">
 <div class="header">
+  <% if logged_in? %>
+    <h4><a href="/questions/new">Ask a Question</a></h4>
+  <% end %>
   <h1>What everyones asking</h1>
 </div>
 
