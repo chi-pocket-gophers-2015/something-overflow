@@ -25,6 +25,7 @@ post '/questions/edit/:id' do
   # need refactor to remove global nature of add_tags?
 
   if @question.update(params[:question])
+    remove_unused_tags(@question, params[:tags])
     add_tags(@question, params[:tags])
     redirect("/questions/#{@question.id}")
   else
