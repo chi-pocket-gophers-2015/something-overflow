@@ -10,12 +10,7 @@ post '/questions/new' do
   # params.inspect
   @question = Question.new(params[:question])
   @question.author = current_user
-  params[:tags].split(" ").each do |tag_word|
-    tag = Tag.find_or_create_by(word: tag_word)
-    @question.tags << tag
-  end
-
-
+  add_tags(@question, params[:tags])
 
   if @question.save
     redirect("/questions/#{@question.id}")
