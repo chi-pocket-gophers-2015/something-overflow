@@ -38,7 +38,8 @@ post '/answer/:id' do
 end
 
 get '/questions' do
-  @questions = Question.all
+  @questions_by_dates = Question.all
+  @questions_by_votes = Question.all.sort {|q1, q2| tally_votes(q1) <=> tally_votes(q2) }.reverse
   erb :'questions/index'
 end
 
