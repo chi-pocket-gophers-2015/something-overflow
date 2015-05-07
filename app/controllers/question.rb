@@ -1,3 +1,10 @@
+get '/questions/sorted_by_votes/test' do
+  @questions = Question.all.sort do |q1, q2|
+    tally_votes(q1) <=> tally_votes(q2)
+  end.reverse
+  erb :dummy_home
+end
+
 get '/questions/new' do
   redirect to "/login" unless logged_in?
   @path = "/questions/new"
@@ -37,5 +44,6 @@ get '/questions' do
   @questions = Question.all
   erb :'questions/index'
 end
+
 
 
