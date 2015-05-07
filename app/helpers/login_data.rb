@@ -20,3 +20,8 @@ def current_user_id
   #returns the current user id, or nil
   current_user ? current_user.id : nil
 end
+
+
+def same_user?(id)
+  current_user_id == id
+end
