@@ -3,7 +3,7 @@
     <h1 class="question_title"><%= @question.title %></h1>
   </div>
 
-  <div class="body">
+  <!-- <div class="body"> -->
 
     <div class="sidebar">
       <table>
@@ -28,138 +28,111 @@
         <div class="up-down-container">
           <a href="/upvote/<%=@question.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
           <div class="upvote-count"><%=tally_votes(@question)%></div>
-          <a href="/downvote/<%=@question.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div>
+          <a href="/downvote/<%=@question.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div></a>
         </div>
+
         <div class="body-container">
             <div class="question_body"><%= @question.body %></div>
         </div>
-      </div>
 
-
-      <div class="question_taggings">
-        <span><a href="">#taggggggg</a></span>
-        <span><a href="">#taggggggg</a></span>
-      </div>
-
-      <div>
-        <% if current_user_id == @question.author_id %>
-          <span id="edit_answer">
-            <a href="/questions/edit/<%= @question.id %>">
-              <div class="edit_question">edit</div>
-            </a>
-        <% end %>
-        <div class="author_details">
-          <span>asked <%= @question.created_at.strftime("%b %d") %> at <%= @question.created_at.strftime("%R") %></span>
-          <span class="username">
-            <a href="/users/<%= @question.author.id %>">
-              <img src="/pikachu.png" alt="author profile picture" />
-              <%= @question.author.username %>
-            </a>
-          </span>
-        </div>
-      <div>
-
-      <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
-
-      <div class="question_comments">
-        <% @question.comments.each do |comment| %>
-        <span>
-          <%= comment.body %> -
-          <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
-          <%= comment.updated_at.strftime("%b %d") %> at <%= comment.updated_at.strftime("%R") %>
-          <% if current_user.id == comment.author.id %>
-                <span id="edit_content">
-                  <a href="/comments/edit/<%= comment.id %>">
-                    edit
-                  </a>
-                </span>
-              <% end %>
-        </span>
-        <% end %>
-      </div>
-
-      <% if @question.answers %>
-        <div class="answers_heading">
-          <table>
-            <tr>
-              <% if @question.answers.length == 1 %>
-                <td><%= @question.answers.length %> Answer</td>
-              <% else %>
-                <td><%= @question.answers.length %> Answers</td>
-              <% end %>
-              <td id="sorting_class">#oldest, votes</td>
-            </tr>
-          </table>
-        </div>
-
-
-
-        <!-- Need to refactor to not double the code -->
-        <!-- iterate through each first for all answers -->
-
-
-        <% @question.answers.each do |answer| %>
-          <div class="question">
-            <div class="up-down-container">
-              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
-              <div class="upvote-count"><%=tally_votes(answer)%></div>
-              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
+        <div class="question-details-container">
+          <div class="q-tags-container">
+            <div class="tag">
+              <a href="">#taggggggg</a>
             </div>
-            <div class="question_body"><%= answer.body %></div>
+            <div class="tag">
+              <a href="">#taggggggg</a>
+            </div>
           </div>
 
-          <div>
-            <% if current_user.id == answer.author.id %>
-              <span id="edit_answer">
+          <div class="q-author-container">
+            <h5 class="q-author-post-time">Asked <%= @question.created_at.strftime("%b %d") %> at <%= @question.created_at.strftime("%R") %></h5>
+            <div class="username">
+              <a href="/users/<%= @question.author.id %>">
+                <%= @question.author.username %>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="q-edit-container">
+
+          <div class="edit-question">
+            <% if current_user_id == @question.author_id %>
+              <a href="/questions/edit/<%= @question.id %>">edit</a>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+
+      <div class="question-comments-container">
+        <% @question.comments.each do |comment| %>
+        <div>
+          <%= comment.body %>
+          <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
+            <% if current_user.id == comment.author.id %>
+                <span id="edit_content">
+                  <a href="/comments/edit/<%= comment.id %>">edit</a>
+                </span>
+              <% end %>
+        </div>
+        <% end %>
+      </div>
+
+      <!-- everything is clean and beautiful above this line -->
+
+
+
+      <% if @question.answers %>
+      <div class="answers-global-container">
+        <div class="answers-header">
+          <div class="answers-count">
+              <% if @question.answers.length == 1 %>
+                <h1><%= @question.answers.length %></h1> <span class="answer-count-span">Answer</span>
+              <% else %>
+                <h1><%= @question.answers.length %></h1> <span class="answer-count-span">Answers</span>
+              <% end %>
+          </div>
+        </div>
+          <!-- <div class="answer-sort-options">#oldest, votes</div> -->
+
+        <%end%>
+
+        <% @question.answers.each do |answer| %>
+        <div class="answer-holder">
+          <div class="answer-container">
+            <div class="a-up-down-container">
+              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <div class="upvote-count"><%=tally_votes(answer)%></div>
+              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div></a>
+            </div>
+            <div class="answer-body">
+              <%= answer.body %>
+            </div>
+
+            <div class = "answer-edit-container">
+            <% if current_user_id == answer.author.id %>
                 <a href="/answers/edit/<%= answer.id %>">
                   edit
                 </a>
-              </span>
-            <% end %>
-            <div class="author_details" id="author_details_answers">
-              <span>answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %></span>
-              <span class="username">
-                <a href="/users/<%= answer.author.id %>">
-                  <img src="/pikachu.png" alt="author profile picture" />
-                  <%= answer.author.username %></span>
-              </a>
-            </div>
-          <div>
-
-          <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
-
-          <div class="question_comments">
-            <% answer.comments.each do |comment| %>
-            <span>
-              <%= comment.body %> -
-              <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
-              <%= comment.updated_at.strftime("%b %d") %>
-              at
-              <%= comment.updated_at.strftime("%R") %>
-              <% if current_user.id == comment.author.id %>
-                <span id="edit_content">
-                  <a href="/comments/edit/<%= comment.id %>">
-                    edit
-                  </a>
-                </span>
-              <% end %>
-            </span>
             <% end %>
           </div>
+          <div class="answer-author-container">
+            <div class="answer-reply-time">
+              answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %>
+            </div>
+            <div class="answer-username">
+              <a href="/users/<%= answer.author_id %>">
+                <%= answer.author.first_name %>
+            </div>
+            </a>
+          </div>
+
+        </div>
+        <div class="add-comment-button"><a href="/answers/new">add a comment</a></div>
         <% end %>
-      <% end %>
-
-      </div>
-
-      <% if logged_in? %>
-      <div class="add_answer">
-        <p>Your Answer</p>
-        <form action="/answer/<%= @question.id %>" method="POST">
-          <textarea name="body"></textarea>
-          <button>Post Your Answer</button>
-        </form>
-      </div>
-      <% end %>
-  </div>
-
 </div>
