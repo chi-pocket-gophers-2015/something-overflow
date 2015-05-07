@@ -12,6 +12,12 @@ $(document).ready(function(){
       data: body
     });
 
+    request.success(function(response){
+      console.log(response);
+      //  select something on page with jQuery and append response
+      $('.question_comments').append(response);
+      });
+    });
   });
 
 
