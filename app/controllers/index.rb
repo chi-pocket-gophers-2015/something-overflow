@@ -5,7 +5,12 @@ end
 
 
 get '/login' do
-  erb :login
+  if request.xhr?
+    erb :'partials/_login', layout: false
+  else
+    erb :login
+  end
+
 end
 
 post '/login' do
