@@ -1,0 +1,33 @@
+<div class="profile-container container">
+<h3><%=current_user.first_name%>'s profile</h3>
+<div class="user-info">
+  <div id="user-pic">my pic yo</div>
+  <div class="user-info-container">
+    <div id="user-about">
+      <h1 id="about-me">About me</h1>
+        <p>I am just a lonely farm girl.</p>
+      <h2>My questions</h2>
+      <div class="user-questions">
+        <table class="user-page-table">
+          <% current_user.questions.each do |q| %>
+          <tr>
+            <td><a href="/question/#{question.id}" class="table-links"><%=q.title%></a></td>
+          </tr>
+        <%end%>
+        </table>
+      </div>
+      <h2>My answers</h2>
+      <div class="user-answers">
+        <table class="user-page-table">
+          <%current_user.questions_for_answers.each do |question|%>
+          <tr>
+            <td><a href="/question/#{question.id}" class="table-links"><%= question.title %></a></td>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

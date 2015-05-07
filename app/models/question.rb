@@ -11,7 +11,7 @@ class Question < ActiveRecord::Base
 
   def check_repeat(user)
     self.votes.each do |vote|
-      false if vote.author_id == user.id
+      return false if vote.author_id == user.id
     end
     true
   end
