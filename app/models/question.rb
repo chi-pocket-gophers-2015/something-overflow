@@ -8,4 +8,11 @@ class Question < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :answers
   has_many :votes, as: :votable
+
+  def check_repeat(user)
+    self.votes.each do |vote|
+      false if vote.author_id == user.id
+    end
+    true
+  end
 end
