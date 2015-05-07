@@ -26,19 +26,15 @@
     <div class="main_content">
 
       <div class="question">
-        <!-- jhsgklfhkdljsfkjHJKAHSDKFSJKDAHFJKhhfjdksahfjkajgncjafsjkdf -->
         <div class="up-down-container">
           <a href="/upvote/<%=@question.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
-          <div class="upvote-count"><%=@question.votes.count%></div>
+          <div class="upvote-count"><%=tally_votes(@question)%></div>
           <a href="/downvote/<%=@question.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
         </div>
         <div class="body-container">
             <div class="question_body"><%= @question.body %></div>
         </div>
-
       </div>
-
-        <!-- DHSAIGHIUEWDNJSKVLJIUERALNDKFSHVBSDIZXJGKSDBVFHNVB  -->
 
 
       <div class="question_taggings">
@@ -106,7 +102,11 @@
 
         <% @question.answers.each do |answer| %>
           <div class="question">
-            <div class="question_votes"><img src="/temp_vote.png" /></div>
+            <div class="up-down-container">
+              <a href="/upvote/<%=@question.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <div class="upvote-count"><%=tally_votes(@question)%></div>
+              <a href="/downvote/<%=@question.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
+            </div>
             <div class="question_body"><%= answer.body %></div>
           </div>
 

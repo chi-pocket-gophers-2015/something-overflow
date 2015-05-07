@@ -386,16 +386,23 @@ td form {
 .up-down-container {
   display: inline-block;
 }
+.upvote-count {
+  width: 1em;
+  height: 1em;
+  text-align: center;
+}
 
 .upvote-symbol, .downvote-symbol {
   background-color: red;
   width: 1em;
   height: 1em;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 1em;
   transition:transform .2s ease-out;
 }
 
- .downvote-symbol:hover ,.upvote-symbol:hover {
+.downvote-symbol:hover ,.upvote-symbol:hover {
   transform: scale(1.3);
 }
 .upvote-symbol {
