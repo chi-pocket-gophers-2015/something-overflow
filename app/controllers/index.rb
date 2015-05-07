@@ -1,6 +1,5 @@
 get '/' do
-  @questions = Question.all
-  erb :'questions/index'
+  redirect('/questions')
 end
 
 

@@ -1,13 +1,29 @@
 <!-- Displays all questions -->
 <div class="feed-container">
-<div class="header">
-  <h1>What everyones asking</h1>
-</div>
-
-  <% @questions.each do |question| %>
-  <div class="post-div">
-    <%= erb :'partials/_question_stub', locals: {question: question} %>
+  <div class="header">
+    <h1>What everyones asking</h1>
   </div>
-<% end %>
 
+  <div id="sorting_links">
+    Sort by:
+    <select id="sortby">
+      <option value='votes'>Votes</option>
+      <option value='date'>Date</option>
+    </select>
+  </div>
 
+ <div id="question_by_dates">
+  <% @questions_by_dates.each do |question| %>
+    <div class="post-div">
+      <%= erb :'partials/_question_stub', locals: {question: question} %>
+    </div>
+  <% end %>
+ </div>
+
+ <div id="question_by_votes">
+  <% @questions_by_votes.each do |question| %>
+    <div class="post-div">
+      <%= erb :'partials/_question_stub', locals: {question: question} %>
+    </div>
+  <% end %>
+ </div>
