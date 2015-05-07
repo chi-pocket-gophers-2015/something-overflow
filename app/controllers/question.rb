@@ -47,15 +47,25 @@ get '/upvote/:question_id/:id' do
     redirect ("/questions/#{current_question.id}")
   else
     redirect ("/questions/#{current_question.id}")
-end
+  end
 end
 
-get '/downvote/:question_id/:id' do
-  current_question = Question.find_by_id(params[:question_id])
-  if current_question.check_repeat(current_user)
-    current_question.votes.create(value: -1, author_id: params[:id]).save!
-    redirect ("/questions/#{current_question.id}")
+get '/downvote/question/:question_id/:answer_id/:id' do
+  current_answer = Question.find_by_id(params[:answer_id])
+  if current_answer.check_repeat(current_user)
+    current_answer.votes.create(value: 1, author_id: params[:id]).save!
+    redirect ("/questions/#{params[:question_id]}")
   else
-    redirect ("/questions/#{current_question.id}")
+    redirect ("/questions/#{params[:question_id]}")
+  end
 end
+
+get '/upvote/question/:question_id/:answer_id/:id' do
+  current_answer = Question.find_by_id(params[:answer_id])
+  if current_answer.check_repeat(current_user)
+    current_answer.votes.create(value: 1, author_id: params[:id]).save!
+    redirect ("/questions/#{params[:question_id]}")
+  else
+    redirect ("/questions/#{params[:question_id]}")
+  end
 end
