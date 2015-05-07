@@ -1,5 +1,5 @@
 <div class="profile-container container">
-<h3><%=current_user.first_name%>'s profile</h3>
+<h3><%=@user.first_name%>'s profile</h3>
 <div class="user-info">
   <div id="user-pic">my pic yo</div>
   <div class="user-info-container">
@@ -9,7 +9,7 @@
       <h2>My questions</h2>
       <div class="user-questions">
         <table class="user-page-table">
-          <% current_user.questions.each do |q| %>
+          <% @user.questions.each do |q| %>
           <tr>
             <td><a href="/questions/#{question.id}" class="table-links"><%=q.title%></a></td>
           </tr>
@@ -19,7 +19,7 @@
       <h2>Questions I have answered</h2>
       <div class="user-answers">
         <table class="user-page-table">
-          <%current_user.answers.each do |answer|%>
+          <%@user.answers.each do |answer|%>
           <tr>
             <td><a href="/questions/#{answer.question.id}" class="table-links"><%= answer.question.title %></a></td>
           </tr>
