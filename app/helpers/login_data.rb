@@ -14,3 +14,9 @@ end
 def logged_in?
   session[:current_user] != nil
 end
+
+def current_user_id
+  # protects the app against "id is not a field of nil class" errors
+  #returns the current user id, or nil
+  current_user ? current_user.id : nil
+end
