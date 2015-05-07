@@ -15,12 +15,21 @@ end
 
 post '/login' do
   user = User.authenticate(params[:user])
-  if user
-    store_user_login(user) #helper
-    redirect to "/home" #<-whatever user's profile/homepage is
+  if request.xhr?
+    if user
+      store_user_login(user)
+      erb :'partials/_login_success', layout: false
+    else
+      "bye"
+    end
   else
-    @errors = "Sorry try again."
-    erb :login
+    if user
+      store_user_login(user) #helper
+      redirect to "/home" #<-whatever user's profile/homepage is
+    else
+      @errors = "Sorry try again."
+      erb :login
+    end
   end
 end
 

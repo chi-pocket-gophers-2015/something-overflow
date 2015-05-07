@@ -22,8 +22,9 @@ $(document).ready(function() {
       });
 
       request.done(function(response){
-        $('#login_box').remove();
         console.log(response);
+        $('.login_box').parent().append(response);
+        $('#signup_link').parent().hide();
       });
     });
   });
