@@ -1,20 +1,19 @@
 <!-- displays a single question stub (consisting of link to individual question page,
 author, votes, answers, views, and tags) -->
-
 <div class="question_stub">
 
   <div class="question_stub_votes">
     <div>Votes: <%= tally_votes(question) %></div>
     <div>Answers:  <%= question.answers.count %> </div>
   </div>
-
-  <div class="question_stub_summary">
+<div class="question_stub_details">
+  <div class="question_stub_title">
     <h3><a href="/questions/<%= question.id%>"><%= question.title %></a></h3>
-
+  </div>
     <div class="question_stub_author">
       Posted by <a href="/users/<%= question.author_id %>"> <%= question.author.first_name %> </a>
     </div>
-
+</div>
     <div>
       <ul class="question_stub_tag_list">
         <% question.tags.each do |tag| %>
@@ -24,4 +23,3 @@ author, votes, answers, views, and tags) -->
     </div>
 
   </div>
-</div>

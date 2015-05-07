@@ -3,6 +3,10 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
+  $(".post-div").click(function (event) {
+    location.href='#'
+  });
+
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
   $("#new-link").click(function(event) {
