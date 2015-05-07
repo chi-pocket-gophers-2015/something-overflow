@@ -1,0 +1,5 @@
+<form action="/answers/edit/<%= @answer.id %>" method="POST" class="answer_edit_form">
+  <input type="hidden" name="_method" value="PUT">
+  <textarea name="body"><%= @answer.body %></textarea><br>
+  <button>Update answer</button>
+</form>

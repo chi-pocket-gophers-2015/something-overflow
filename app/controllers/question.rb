@@ -30,8 +30,23 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
+get '/answers/edit/:id' do
+  @answer = Answer.find_by_id(params[:id])
+  if current_user.id == @answer.author.id
+
+    erb :'answers/show'
+  else
+    "You are not allowed here, get out."
+  end
+end
+
+put '/answers/edit/:id' do
+  answer = Answer.find_by_id(params[:id])
+  answer.update(body: params[:body])
+  redirect("/questions/#{answer.question.id}")
+end
+
 post '/answer/:id' do
-  #need to add in author_id and error handling
   question = Question.find_by(id: params[:id])
   new_answer = question.answers.create(body: params[:body], author_id: current_user.id)
   if new_answer.valid? && request.xhr?
@@ -48,7 +63,6 @@ get '/questions' do
   @questions_by_votes = Question.all.sort {|q1, q2| tally_votes(q1) <=> tally_votes(q2) }.reverse
   erb :'questions/index'
 end
-
 
 get '/upvote/:question_id/:id' do
   current_question = Question.find_by_id(params[:question_id])
