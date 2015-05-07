@@ -11,7 +11,7 @@
         <table class="user-page-table">
           <% @user.questions.each do |q| %>
           <tr>
-            <td><a href="/questions/#{question.id}" class="table-links"><%=q.title%></a></td>
+            <td><a href="/questions/<%=q.id%>" class="table-links"><%=q.title%></a></td>
           </tr>
         <%end%>
         </table>
@@ -21,7 +21,7 @@
         <table class="user-page-table">
           <%@user.answers.each do |answer|%>
           <tr>
-            <td><a href="/questions/#{answer.question.id}" class="table-links"><%= answer.question.title %></a></td>
+            <td><a href="/questions/<%=answer.question.id%>" class="table-links"><%= answer.question.title %></a></td>
           </tr>
           <%end%>
         </table>
