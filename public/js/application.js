@@ -58,11 +58,11 @@ $(document).ready(function() {
       $( "#new_comment_link" ).show();
       $( "<p>" + text + "</p>" ).appendTo( ".question_comments" );
       $("form#new_comment").hide();
-      console.log("this is: " + $(this));
+      console.log("this is: " + text);
    var request = $.ajax({
      url: '/comments/new',
      method: 'POST',
-     data: text //WHAT DO HERE I DONNO
+     data: {comment: text}
    });
     };
   });

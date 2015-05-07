@@ -5,8 +5,7 @@ get "/comments/new" do
 end
 
 post "/comments/new" do
-  params.inspect
-  # @new_comment = Comment.new(params[body])
-  # @new_comment.author = current_user
-  # @new_comment.save
+  @new_comment = Comment.new(body: params[:comment])
+  @new_comment.author = current_user
+  @new_comment.save
 end
