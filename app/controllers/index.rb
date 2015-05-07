@@ -1,24 +1,34 @@
 get '/' do
-  @questions = Question.all
-  erb :'questions/index'
+  redirect('/questions')
 end
 
 
 get '/login' do
-  erb :login
+  if request.xhr?
+    erb :'partials/_login', layout: false
+  else
+    erb :login
+  end
+
 end
 
 post '/login' do
   user = User.authenticate(params[:user])
-  if user
-    store_user_login(user) #helper
-    redirect to "/home" #<-whatever user's profile/homepage is
+  if request.xhr?
+    if user
+      store_user_login(user)
+      erb :'partials/_login_success', layout: false
+    else
+      erb :'partials/_login_fail', layout: false
+    end
   else
-    # logout_user #helper
-    # redirect to "/login"
-
-    @errors = "Sorry try again."
-    erb :login
+    if user
+      store_user_login(user) #helper
+      redirect to "/home" #<-whatever user's profile/homepage is
+    else
+      @errors = "Sorry try again."
+      erb :login
+    end
   end
 end
 

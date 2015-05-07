@@ -15,6 +15,11 @@ a:hover {
   color: #999999;
 }
 
+#sorting_links {
+  float: left;
+  margin-bottom: 20px;
+}
+
 .feed-container {
   position: absolute;
   margin-top: 1em;
@@ -351,6 +356,7 @@ td form {
     transition-property: background-color, transform, box-shadow;
     transition-duration: .15s;
     transition-timing-function: ease-out;
+    clear: both;
 }
 
 .post-div:hover {
@@ -369,9 +375,13 @@ td form {
   font-weight: 100;
   border-bottom: 1px solid #E3E3E3;
   padding-bottom:2%;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
+.header > h4 {
+  float: right;
+  display: inline;
+}
 
 /*-------------------*/
 /*-------question stuff----------------*/

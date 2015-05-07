@@ -6,11 +6,7 @@
     <%= @errors %>
   <% end %>
 
-  <form action ="/login" method = "post">
-    <input type="text" name="user[username]" placeholder="username">
-    <input type="password" name="user[password]" placeholder="password">
-    <input type="submit" value="login">
-  </form>
+  <%= erb :'partials/_login' %>
 
   <p>Don't have an account yet? <a href="/signup">sign up here</a></p>
 </div>

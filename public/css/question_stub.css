@@ -10,6 +10,10 @@
   padding-top: 1.3em;
 }
 
+.question_stub_tag_list {
+  display: inline;
+}
+
 .question_stub_tag_list li{
   display: inline;
   list-style-type: none;

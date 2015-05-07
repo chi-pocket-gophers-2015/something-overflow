@@ -26,16 +26,20 @@ end
 
 post '/answer/:id' do
   #need to add in author_id and error handling
-  answer = Answer.new(body: params[:body],
-                      author_id: current_user.id,
-                      question_id: params[:id]
-                     )
-  answer.save
-  redirect("/questions/#{params[:id]}")
+  question = Question.find_by(id: params[:id])
+  new_answer = question.answers.create(body: params[:body], author_id: current_user.id)
+  if new_answer.valid? && request.xhr?
+    # content_type :json
+    # {id: answer.id, body: answer.body}.to_json
+    erb :"/partials/_answer_show", locals: {answer: new_answer}, layout: false
+  else
+    redirect("/questions/#{params[:id]}")
+  end
 end
 
 get '/questions' do
-  @questions = Question.all
+  @questions_by_dates = Question.all
+  @questions_by_votes = Question.all.sort {|q1, q2| tally_votes(q1) <=> tally_votes(q2) }.reverse
   erb :'questions/index'
 end
 
