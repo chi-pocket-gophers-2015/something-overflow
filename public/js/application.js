@@ -65,7 +65,7 @@ $( '#new_comment_link').click(function(event) {
       $("form#new_comment").hide();
 
     var route = $(this).parent().attr("action").toLowerCase();
-    console.log("the route: " + route);
+    // console.log("the route: " + route);
 
     var request = $.ajax({
      url: "" + route,
@@ -74,7 +74,7 @@ $( '#new_comment_link').click(function(event) {
     });
 
     request.success(function(response){
-      $(".question_comments").append(response);
+      $(".question_comments").prepend(response);
     });
 
     };
