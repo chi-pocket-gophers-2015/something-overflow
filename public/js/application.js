@@ -44,11 +44,9 @@ $(document).ready(function() {
       $( "#new_comment_link" ).hide();
   });
   $( "#new_comment input[type=submit]" ).click(function(event){
-    console.log("I was clicked!");
 
     event.preventDefault();
     var text = $( "textarea[name=body]" ).val();
-    console.log("text is: " + text);
 
     if (text == "") {
       $( "#new_comment_link" ).show();
@@ -58,9 +56,12 @@ $(document).ready(function() {
       $( "#new_comment_link" ).show();
       $( "<p>" + text + "</p>" ).appendTo( ".question_comments" );
       $("form#new_comment").hide();
-      console.log("this is: " + text);
+
+    var route = $(this).parent().attr("action").toLowerCase();
+    console.log("the route: " + route);
+
    var request = $.ajax({
-     url: '/comments/new',
+     url: "" + route,
      method: 'POST',
      data: {comment: text}
    });
