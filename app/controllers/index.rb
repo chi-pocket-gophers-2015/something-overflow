@@ -24,7 +24,7 @@ post '/login' do
   else
     if user
       store_user_login(user) #helper
-      redirect to "/home" #<-whatever user's profile/homepage is
+      redirect to "/users/#{current_user_id}" #<-whatever user's profile/homepage is
     else
       @errors = "Sorry try again."
       erb :login
