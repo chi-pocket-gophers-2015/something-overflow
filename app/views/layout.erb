@@ -16,6 +16,8 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+  <script src="/js/answer.js"></script>
+
   <title>Question Corner</title>
 </head>
 <body>
@@ -24,7 +26,7 @@
       <h1 id = "header-title"><a href="/">Stack Gameofthrone</a></h1>
       <div id = "header-options">
         <ul>
-          <% if !logged_in? %>
+          <% if logged_in? == false %>
             <li><a href="/signup">sign up</a></li>
             <li><a href="/login">login</a></li>
           <% else %>

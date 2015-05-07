@@ -26,12 +26,13 @@ end
 
 post '/answer/:id' do
   #need to add in author_id and error handling
-  answer = Answer.new(body: params[:body],
-                      author_id: current_user.id,
-                      question_id: params[:id]
-                     )
-  answer.save
-  redirect("/questions/#{params[:id]}")
+  question = Question.find_by(id: params[:id])
+  answer = question.answers.create(body: params[:body], author_id: current_user.id)
+  if answer.valid? && request.xhr?
+
+  else
+    redirect("/questions/#{params[:id]}")
+  end
 end
 
 get '/questions' do

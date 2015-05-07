@@ -5,7 +5,7 @@ get "/questions/:id/comments/new" do
 end
 
 post "/questions/:id/comments/new" do
-  @new_comment = Comment.new(body: params[:comment])
+  @new_comment = Comment.new(body: params[:comment], commentable_id: params[:id], commentable_type: "Question")
   @new_comment.author = current_user
   @new_comment.save
 end
@@ -17,7 +17,7 @@ get "/answers/:id/comments/new" do
 end
 
 post "/answers/:id/comments/new" do
-  @new_comment = Comment.new(body: params[:comment], )
+  @new_comment = Comment.new(body: params[:comment], commentable_id: params[:id], commentable_type: "Answer")
   @new_comment.author = current_user
   @new_comment.save
 end
