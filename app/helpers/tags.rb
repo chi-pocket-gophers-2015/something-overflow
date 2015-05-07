@@ -11,3 +11,15 @@ def add_tags (question, tag_string)
     end
   end
 end
+
+
+def remove_unused_tags (question, tag_string)
+    # if a tagging for this question exists and the tag isn't in the tag_array,
+    # destroy that tagging
+    current_tags = tag_string.split(" ")
+
+    unused_taggings = question.taggings.to_a.select {|tagging| !current_tags.include?(tagging.tag.word)}
+    #check for tagging on this object.
+    unused_taggings.each { |tagging| Tagging.destroy(tagging.id)}
+
+end

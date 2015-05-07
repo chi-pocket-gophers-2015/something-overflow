@@ -17,7 +17,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
   <script src="/js/answer.js"></script>
-
+  <script src="/js/login.js"></script>
   <title>Question Corner</title>
 </head>
 <body>
@@ -27,11 +27,11 @@
       <div id = "header-options">
         <ul>
           <% if logged_in? == false %>
-            <li><a href="/signup">sign up</a></li>
-            <li><a href="/login">login</a></li>
+            <li><a href="/signup" id="signup_link">sign up</a></li>
+            <li><a href="/login" id="login_link">login</a></li>
+            <li class="login_box"></li>
           <% else %>
-            <li> Sup, <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
-            <li><a href="/logout">log out</a></li>
+            <%= erb :'partials/_login_success' %>
           <% end %>
         </ul>
       </div>
@@ -39,5 +39,6 @@
   </nav>
   <main>
     <%= yield %>
+  </main>
   </body>
 </html>

@@ -104,15 +104,15 @@
         <% @question.answers.each do |answer| %>
           <div class="question">
             <div class="up-down-container">
-              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
               <div class="upvote-count"><%=tally_votes(answer)%></div>
-              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div>
+              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div>
             </div>
             <div class="question_body"><%= answer.body %></div>
           </div>
 
           <div>
-            <% if current_user.id == answer.author.id %>
+            <% if current_user_id == answer.author.id %>
               <span id="edit_answer">
                 <a href="/answers/edit/<%= answer.id %>">
                   edit
