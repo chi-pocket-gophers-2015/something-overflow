@@ -25,6 +25,9 @@
           </tr>
           <%end%>
         </table>
+        <% if logged_in? %>
+          <h2><a href="/questions/new">--> Ask a New Question</a></h2>
+        <% end %>
       </div>
     </div>
   </div>
