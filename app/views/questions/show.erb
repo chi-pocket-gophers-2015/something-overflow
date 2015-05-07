@@ -39,6 +39,13 @@
       </div>
 
       <div>
+        <% if current_user.id == @question.author.id %>
+          <span id="edit_answer">
+            <a href="/questions/edit/<%= @question.id %>">
+              edit
+            </a>
+          </span>
+        <% end %>
         <div class="author_details">
           <span>asked <%= @question.created_at.strftime("%b %d") %> at <%= @question.created_at.strftime("%R") %></span>
           <span class="username">
@@ -58,6 +65,13 @@
           <%= comment.body %> -
           <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
           <%= comment.updated_at.strftime("%b %d") %> at <%= comment.updated_at.strftime("%R") %>
+          <% if current_user.id == comment.author.id %>
+                <span id="edit_content">
+                  <a href="/comments/edit/<%= comment.id %>">
+                    edit
+                  </a>
+                </span>
+              <% end %>
         </span>
         <% end %>
       </div>
@@ -89,6 +103,13 @@
           </div>
 
           <div>
+            <% if current_user.id == answer.author.id %>
+              <span id="edit_answer">
+                <a href="/answers/edit/<%= answer.id %>">
+                  edit
+                </a>
+              </span>
+            <% end %>
             <div class="author_details" id="author_details_answers">
               <span>answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %></span>
               <span class="username">
@@ -109,11 +130,22 @@
               <%= comment.updated_at.strftime("%b %d") %>
               at
               <%= comment.updated_at.strftime("%R") %>
+              <% if current_user.id == comment.author.id %>
+                <span id="edit_content">
+                  <a href="/comments/edit/<%= comment.id %>">
+                    edit
+                  </a>
+                </span>
+              <% end %>
             </span>
             <% end %>
           </div>
         <% end %>
       <% end %>
+
+      </div>
+
+      <% if logged_in? %>
       <div class="add_answer">
         <p>Your Answer</p>
         <form action="/answer/<%= @question.id %>" method="POST">
@@ -121,9 +153,7 @@
           <button>Post Your Answer</button>
         </form>
       </div>
-
-    </div>
-
+      <% end %>
   </div>
 
 </div>
