@@ -1,10 +1,13 @@
 <!-- Displays all questions -->
-<br>
-<div style="border-top: 1px solid black">
+<div class="feed-container">
+<div class="header">
+  <h1>What everyones asking</h1>
+</div>
 
-<% @questions.each do |question| %>
-<%= erb :'partials/_question_stub', locals: {question: question} %>
-<br> <!-- replace this with css in the question stub eventually -->
+  <% @questions.each do |question| %>
+  <div class="post-div">
+    <%= erb :'partials/_question_stub', locals: {question: question} %>
+  </div>
 <% end %>
 
-</div>
+
