@@ -7,10 +7,16 @@ get '/comments/edit/:id' do
 end
 
 get '/questions/edit/:id' do
+
+
   #refactor to remove instance variable assignment
   @question = Question.find(params[:id])
   @path = "/questions/edit/#{params[:id]}"
   @method = "post"
+
+  # user auth
+  redirect("/questions/#{params[:id]}") unless current_user_id == @question.author_id
+
   erb :'questions/edit'
 end
 
