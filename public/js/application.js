@@ -35,4 +35,36 @@ $(document).ready(function() {
   // 	});
   // });
 
+
+
+  $( "form#new_comment" ).hide()
+ $( '#new_comment_link').click(function(event) {
+    event.preventDefault();
+      $( "form#new_comment" ).show();
+      $( "#new_comment_link" ).hide();
+  });
+  $( "#new_comment input[type=submit]" ).click(function(event){
+    console.log("I was clicked!");
+
+    event.preventDefault();
+    var text = $( "textarea[name=body]" ).val();
+    console.log("text is: " + text);
+
+    if (text == "") {
+      $( "#new_comment_link" ).show();
+      $( "form#new_comment" ).hide();
+    }
+    else {
+      $( "#new_comment_link" ).show();
+      $( "<p>" + text + "</p>" ).appendTo( ".question_comments" );
+      $("form#new_comment").hide();
+      console.log("this is: " + $(this));
+   var request = $.ajax({
+     url: '/comments/new',
+     method: 'POST',
+     data: text //WHAT DO HERE I DONNO
+   });
+    };
+  });
+
 });

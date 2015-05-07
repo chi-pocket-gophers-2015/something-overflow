@@ -50,7 +50,10 @@
         </div>
       <div>
 
-      <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+      <div class="add_comment_link">
+        <a id="new_comment_link" href="/comments/new">add a comment</a>
+        <%= erb :'partials/_comment_form' %>
+      </div>
 
       <div class="question_comments">
         <% @question.comments.each do |comment| %>
@@ -99,7 +102,9 @@
             </div>
           <div>
 
-          <div class="add_comment_link"><a href="/answers/new">add a comment</a></div>
+          <div class="add_comment_link">
+            <a id="new_comment_link" href="/comments/new">add a comment</a>
+          </div>
 
           <div class="question_comments">
             <% answer.comments.each do |comment| %>

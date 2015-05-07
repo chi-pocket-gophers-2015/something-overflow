@@ -14,9 +14,6 @@ post '/login' do
     store_user_login(user) #helper
     redirect to "/home" #<-whatever user's profile/homepage is
   else
-    # logout_user #helper
-    # redirect to "/login"
-
     @errors = "Sorry try again."
     erb :login
   end
