@@ -5,6 +5,10 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
+  $(".post-div").click(function (event) {
+    location.href='#'
+  });
+
   $("#new-link").click(function(event) {
   	event.preventDefault();
 
