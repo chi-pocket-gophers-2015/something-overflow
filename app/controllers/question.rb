@@ -19,6 +19,12 @@ post '/questions/new' do
   end
 end
 
+post 'questions/:question_id/answers/best/:id' do
+  guess = Guess.find_by_id(params[:question_id])
+  guess.update(best_answer_id: params[:id])
+  redirect("/questions/#{params[:question_id]}")
+end
+
 get '/questions/:id' do
   @question = Question.find_by_id(params[:id])
   erb :'questions/show'
