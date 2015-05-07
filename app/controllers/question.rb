@@ -10,6 +10,7 @@ post '/questions/new' do
   # params.inspect
   @question = Question.new(params[:question])
   @question.author = current_user
+  add_tags(@question, params[:tags])
 
   if @question.save
     redirect("/questions/#{@question.id}")
