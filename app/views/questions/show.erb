@@ -25,6 +25,21 @@
     <div class="main_content">
 
       <div class="question">
+
+    <% if logged_in? %>
+      <div class="add-answer">
+        <form class="post_answer" action="/answer/<%= @question.id %>" method="POST">
+          <textarea name="body"></textarea>
+        </form>
+          <div class="add_comment_link">
+            <a class="new_comment_link" href="/questions/<%= @question.id%>/comments/new">
+              add a comment
+              <%= erb :'partials/_comment_form', locals: {parent: @question.class, id: @question.id }  %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+
         <div class="up-down-container">
           <a href="/upvote/<%=@question.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
           <div class="upvote-count"><%=tally_votes(@question)%></div>
@@ -63,14 +78,10 @@
               <a href="/questions/edit/<%= @question.id %>">edit</a>
             <% end %>
           </div>
-
         </div>
 
 
-      <div class="add_comment_link">
-        <a class="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
-        <%= erb :'partials/_comment_form', locals: {parent: @question.class, id: @question.id }  %>
-      </div>
+
 
       <div class="question-comments-container"> <!-- #was span for appending... -->
         <% @question.comments.each do |comment| %>
@@ -109,6 +120,7 @@
 
         <% @question.answers.each do |answer| %>
         <div class="answer-holder">
+
           <div class="answer-container">
             <div class="a-up-down-container">
               <a href="/upvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
@@ -119,6 +131,13 @@
               <%= answer.body %>
             </div>
 
+
+          <div class="answer-author-container">
+            <div class="answer-username">
+              <a href="/users/<%= answer.author_id %>">
+                <%= answer.author.first_name %>
+            </div>
+            </a>
             <div class = "answer-edit-container">
             <% if current_user_id == answer.author.id %>
                 <a href="/answers/edit/<%= answer.id %>">
@@ -126,21 +145,16 @@
                 </a>
             <% end %>
           </div>
-          <div class="answer-author-container">
             <div class="answer-reply-time">
               answered <%= answer.created_at.strftime("%b %d") %> at <%= answer.created_at.strftime("%R") %>
             </div>
-            <div class="answer-username">
-              <a href="/users/<%= answer.author_id %>">
-                <%= answer.author.first_name %>
-            </div>
-            </a>
           </div>
         </div>
         <div class="add-comment-button">
-          <a class="new_comment_link" href="/answers/<%=answer.id%>/comments/new">add a comment</a>
-            <%= erb :'partials/_comment_form', locals: {pineapple: answer.class, id: answer.id } %>
+          <div class="arrow-right"></div>
+          <a class="answer-comment-button"  href="/answers/<%=answer.id%>/comments/new">add a comment</a>
         </div>
+        <%= erb :'partials/_comment_form',  :locals => { parent: current_user.id , id: answer.id } %>
 <!-- this is the start of the problem -->
         <% answer.comments.each do |comment| %>
           <div class="question-comments-buffer">
@@ -168,14 +182,5 @@
 
   <% end %>
       <!-- line above is end of div for answer container -->
-      <% if logged_in? %>
-      <div class="add_answer">
-        <p>Your Answer</p>
-        <form class="post_answer" action="/answer/<%= @question.id %>" method="POST">
-          <textarea name="body"></textarea>
-          <button>Post Your Answer</button>
-        </form>
-      </div>
-      <% end %>
-  </div>
+<!--  -->
 </div>

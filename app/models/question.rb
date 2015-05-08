@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
 
   validates :author, :body, :title, {presence: true}
 
-  belongs_to :author, class_name: "User"
+  belongs_to :author, class_name: 'User'
   has_many :comments, as: :commentable
   has_many :taggings
   has_many :tags, through: :taggings
@@ -15,4 +15,6 @@ class Question < ActiveRecord::Base
     end
     true
   end
+
+
 end
