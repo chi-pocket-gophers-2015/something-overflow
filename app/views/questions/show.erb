@@ -68,7 +68,7 @@
 
 
       <div class="add_comment_link">
-        <a id="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
+        <a class="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
         <%= erb :'partials/_comment_form', locals: {parent: @question.class, id: @question.id }  %>
       </div>
 
@@ -78,7 +78,7 @@
           <%= comment.body %>
           <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
           <%= comment.updated_at.strftime("%b %d") %> at <%= comment.updated_at.strftime("%R") %>
-            <% if current_user.id == comment.author.id %>
+            <% if current_user_id == comment.author.id %>
                 <span id="edit_content">
                   <a href="/comments/edit/<%= comment.id %>">edit</a>
                 </span>
@@ -111,9 +111,9 @@
         <div class="answer-holder">
           <div class="answer-container">
             <div class="a-up-down-container">
-              <a href="/upvote/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <a href="/upvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
               <div class="upvote-count"><%=tally_votes(answer)%></div>
-              <a href="/downvote/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div></a>
+              <a href="/downvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div></a>
             </div>
             <div class="answer-body">
               <%= answer.body %>
@@ -137,10 +137,34 @@
             </a>
           </div>
         </div>
-        <div class="add-comment-button"><a href="/questions/#{@question.id}/answers/#{answer.id}/reply">add a comment</a></div>
-      <% end %>
+        <div class="add-comment-button">
+          <a class="new_comment_link answer_comment_button" href="/answers/<%=answer.id%>/comments/new">add a comment</a>
+            <%= erb :'partials/_comment_form', locals: {parent: answer.class, id: answer.id } %>
+        </div>
 
+        <% answer.comments.each do |comment| %>
+          <div class="question-comments-buffer">
+            <div class="question-comments-container">
+              <div class= "a-comment-body">
+                <%= comment.body %>
+                <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
+                <%= comment.updated_at.strftime("%b %d") %>
+                at
+                <%= comment.updated_at.strftime("%R") %>
+                <% if current_user.id == comment.author.id %>
+
+                    <a href="/comments/edit/<%= comment.id %>">
+                      edit
+                    </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+<% end %>
       </div>
+
 
       <% if logged_in? %>
       <div class="add_answer">

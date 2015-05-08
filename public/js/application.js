@@ -41,28 +41,28 @@ $(document).ready(function() {
 
 
 
-$( "form#new_comment" ).hide()
-$( '#new_comment_link').click(function(event) {
+$( "form.new_comment" ).hide()
+$( '.new_comment_link').click(function(event) {
     event.preventDefault();
-      $( "form#new_comment" ).show();
-      $( "#new_comment_link" ).hide();
+      $( "form.new_comment" ).show();
+      $( ".new_comment_link" ).hide();
   });
 
-  $( "#new_comment input[type=submit]" ).click(function(event){
+  $( ".new_comment input[type=submit]" ).click(function(event){
 
     event.preventDefault();
 
     var text = $( "textarea[name=body]" ).val();
 
     if (text == "") {
-      $( "#new_comment_link" ).show();
-      $( "form#new_comment" ).hide();
+      $( ".new_comment_link" ).show();
+      $( "form.new_comment" ).hide();
     }
 
     else {
-      $( "#new_comment_link" ).show();
-      $( "<p>" + text + "</p>" ).appendTo( ".question_comments" );
-      $("form#new_comment").hide();
+      $( ".new_comment_link" ).show();
+      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
+      $("form.new_comment").hide();
 
     var route = $(this).parent().attr("action").toLowerCase();
     // console.log("the route: " + route);
@@ -74,7 +74,7 @@ $( '#new_comment_link').click(function(event) {
     });
 
     request.success(function(response){
-      $(".question_comments").prepend(response);
+      $(".question-comments-container").prepend(response);
     });
 
     };
