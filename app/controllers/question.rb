@@ -10,7 +10,7 @@ post '/questions/new' do
   # params.inspect
   @question = Question.new(params[:question])
   @question.author = current_user
-  add_tags(@question, params[:tags])
+  @question.add_tags(params[:tags])
 
   if @question.save
     redirect("/questions/#{@question.id}")
@@ -60,7 +60,7 @@ end
 
 get '/questions' do
   @questions_by_dates = Question.all
-  @questions_by_votes = Question.all.sort {|q1, q2| tally_votes(q1) <=> tally_votes(q2) }.reverse
+  @questions_by_votes = Question.all.sort {|q1, q2| q1.tally_votes <=> q2.tally_votes }.reverse
   erb :'questions/index'
 end
 
