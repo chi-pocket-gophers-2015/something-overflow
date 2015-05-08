@@ -68,7 +68,7 @@
 
 
       <div class="add_comment_link">
-        <a id="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
+        <a class="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
         <%= erb :'partials/_comment_form', locals: {parent: @question.class, id: @question.id }  %>
       </div>
 
@@ -137,10 +137,21 @@
             </a>
           </div>
         </div>
-        <div class="add-comment-button"><a href="/questions/#{@question.id}/answers/#{answer.id}/reply">add a comment</a></div>
-      <% end %>
+        <div class="add-comment-button">
+          <a class="new_comment_link answer_comment_button" href="/answers/<%=answer.id%>/comments/new">add a comment</a>
+            <%= erb :'partials/_comment_form', locals: {parent: answer.class, id: answer.id } %>
+        </div>
 
+<% answer.comments.each do |comment| %>
+
+<h3><%= comment.body %></h3>
+
+
+<% end %>
+
+<% end %>
       </div>
+
 
       <% if logged_in? %>
       <div class="add_answer">
