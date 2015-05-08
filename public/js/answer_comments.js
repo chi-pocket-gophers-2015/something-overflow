@@ -28,7 +28,7 @@ $( '.answer_comment_button').click(function(event) {
       $( "form.new_comment" ).hide();
     } else {
       $( ".answer_comment_button" ).show();
-      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
+      $(text).prependTo( ".question-comments-container" );
       $("form.new_comment").hide();
       console.log("made it this far!");
       console.log($(this).parent());
