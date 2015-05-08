@@ -569,8 +569,10 @@ td form {
   /*display: inline-block;*/
   width: 80%;
   margin-left: 1em;
+  height: 5em;
   background-color: #E1E1E1;
 }
+
 
 /*------------------------------------*/
 

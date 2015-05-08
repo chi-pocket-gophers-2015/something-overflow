@@ -137,7 +137,10 @@
             </a>
           </div>
         </div>
-        <div class="add-comment-button"><a href="/questions/#{@question.id}/answers/#{answer.id}/reply">add a comment</a></div>
+        <div class="add-comment-button">
+          <a class="new_comment_link" href="/answers/<%=answer.id%>/comments/new">add a comment</a>
+            <%= erb :'partials/_comment_form', locals: {pineapple: answer.class, id: answer.id } %>
+        </div>
 <!-- this is the start of the problem -->
         <% answer.comments.each do |comment| %>
           <div class="question-comments-buffer">
