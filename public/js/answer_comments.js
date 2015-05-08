@@ -11,7 +11,7 @@ $( '.answer_comment_button').click(function(event) {
       $( ".answer_comment_button" ).hide();
   });
 
-  $( ".new_comment input[type=submit]" ).click(function(event){
+  $( ".new_comment input[data-parent=Answer]" ).click(function(event){
     console.log("comment button clicked!");
     event.preventDefault();
 
@@ -28,7 +28,7 @@ $( '.answer_comment_button').click(function(event) {
       $( "form.new_comment" ).hide();
     } else {
       $( ".answer_comment_button" ).show();
-      $( "<p>" + text + "</p>" ).prependTo( ".question-comments-container" );
+      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
       $("form.new_comment").hide();
       console.log("made it this far!");
       console.log($(this).parent());

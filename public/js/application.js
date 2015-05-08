@@ -61,7 +61,7 @@ $( '.new_comment_link').click(function(event) {
 
     else {
       $( ".new_comment_link" ).show();
-      $( "<p>" + text + "</p>" ).prependTo( ".question-comments-container" );
+      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
       $("form.new_comment").hide();
 
     var route = $(this).parent().attr("action").toLowerCase();
