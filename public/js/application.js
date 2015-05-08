@@ -23,62 +23,62 @@ $(document).ready(function() {
   	$(this).hide();
   });
 
-  // $('form').submit(function(){});
-  // $('body').on('submit', 'form', function(event) {
-  // 	event.preventDefault();
+  $('form').submit(function(){});
+  $('body').on('submit', 'form', function(event) {
+  	event.preventDefault();
 
 
-  // 	var request = $.ajax({
-  // 		url: 'contacts',
-  // 		method: 'POST',
-  // 		data: $(this).serialize()
-  // 	});
+  	var request = $.ajax({
+  		url: 'contacts',
+  		method: 'POST',
+  		data: $(this).serialize()
+  	});
 
-  // 	request.done(function(response){
-  // 		$('tbody').append(response);
-  // 	});
-  // });
-
-
-
-$( "form.new_comment" ).hide()
-$( '.new_comment_link').click(function(event) {
-    event.preventDefault();
-      $( "form.new_comment" ).show();
-      $( ".new_comment_link" ).hide();
+  	request.done(function(response){
+  		$('tbody').append(response);
+  	});
   });
 
-  $( ".new_comment input[type=submit]" ).click(function(event){
 
-    event.preventDefault();
 
-    var text = $( "textarea[name=body]" ).val();
+// $( "form#new-comment" ).hide()
+// $( '.new_comment_link').click(function(event) {
+//     event.preventDefault();
+//       $( "form#new-comment" ).show();
+//       $( ".new_comment_link" ).hide();
+//   });
 
-    if (text == "") {
-      $( ".new_comment_link" ).show();
-      $( "form.new_comment" ).hide();
-    }
+//   $( ".new_comment input[type=submit]" ).click(function(event){
 
-    else {
-      $( ".new_comment_link" ).show();
-      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
-      $("form.new_comment").hide();
+//     event.preventDefault();
 
-    var route = $(this).parent().attr("action").toLowerCase();
-    // console.log("the route: " + route);
+//     var text = $( "textarea[name=body]" ).val();
 
-    var request = $.ajax({
-     url: "" + route,
-     method: 'POST',
-     data: {comment: text}
-    });
+//     if (text == "") {
+//       $( ".new_comment_link" ).show();
+//       $( "form.new_comment" ).hide();
+//     }
 
-    request.success(function(response){
-      $(".question-comments-container").prepend(response);
-    });
+//     else {
+//       $( ".new_comment_link" ).show();
+//       $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
+//       $("form.new_comment").hide();
 
-    };
+//     var route = $(this).parent().attr("action").toLowerCase();
+//     // console.log("the route: " + route);
 
-  });
+//     var request = $.ajax({
+//      url: "" + route,
+//      method: 'POST',
+//      data: {comment: text}
+//     });
+
+//     request.success(function(response){
+//       $(".question-comments-container").prepend(response);
+//     });
+
+//     };
+
+//   });
 
 });
