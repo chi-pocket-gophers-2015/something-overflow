@@ -68,7 +68,7 @@
 
 
       <div class="add_comment_link">
-        <a id="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
+        <a class="new_comment_link" href="/questions/<%= @question.id%>/comments/new">add a comment</a>
         <%= erb :'partials/_comment_form', locals: {parent: @question.class, id: @question.id }  %>
       </div>
 
@@ -111,9 +111,9 @@
         <div class="answer-holder">
           <div class="answer-container">
             <div class="a-up-down-container">
-              <a href="/upvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "upvote-symbol"></div></a>
+              <a href="/upvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
               <div class="upvote-count"><%=tally_votes(answer)%></div>
-              <a href="/downvote/question/<%=@question.id%>/<%=answer.id%>/<%=current_user.id%>"><div class = "downvote-symbol"></div></a>
+              <a href="/downvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div></a>
             </div>
             <div class="answer-body">
               <%= answer.body %>

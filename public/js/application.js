@@ -61,7 +61,7 @@ $( '.new_comment_link').click(function(event) {
 
     else {
       $( ".new_comment_link" ).show();
-      $( "<p>" + text + "</p>" ).appendTo( ".question-comments-container" );
+      $( "<div>" + text + "</div>" ).prependTo( ".question-comments-container" );
       $("form.new_comment").hide();
 
     var route = $(this).parent().attr("action").toLowerCase();
@@ -74,7 +74,7 @@ $( '.new_comment_link').click(function(event) {
     });
 
     request.success(function(response){
-      $(".question_comments").prepend(response);
+      $(".question-comments-container").prepend(response);
     });
 
     };

@@ -1,4 +1,5 @@
-<form id="new-comment" action="/<%=pineapple%>s/<%=id%>/comments/new" method="post">
+
+<form id="new-comment" action="/<%=parent%>s/<%=id%>/comments/new" method="post">
     <textarea name="body" placeholder="Write comment here..."></textarea>
-    <input type="submit"></input>
+    <input type="submit" data-parent="<%=parent%>"></input>
 </form>
