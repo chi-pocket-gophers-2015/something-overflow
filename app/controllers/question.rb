@@ -60,7 +60,7 @@ end
 
 get '/questions' do
   @questions_by_dates = Question.all
-  @questions_by_votes = Question.all.sort {|q1, q2| tally_votes(q1) <=> tally_votes(q2) }.reverse
+  @questions_by_votes = Question.all.sort {|q1, q2| q1.tally_votes <=> q2.tally_votes }.reverse
   erb :'questions/index'
 end
 

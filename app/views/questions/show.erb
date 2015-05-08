@@ -27,7 +27,7 @@
       <div class="question">
         <div class="up-down-container">
           <a href="/upvote/<%=@question.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
-          <div class="upvote-count"><%=tally_votes(@question)%></div>
+          <div class="upvote-count"><%=@question.tally_votes%></div>
           <a href="/downvote/<%=@question.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div></a>
         </div>
 
@@ -112,7 +112,7 @@
           <div class="answer-container">
             <div class="a-up-down-container">
               <a href="/upvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "upvote-symbol"></div></a>
-              <div class="upvote-count"><%=tally_votes(answer)%></div>
+              <div class="upvote-count"><%=answer.tally_votes%></div>
               <a href="/downvote/<%=@question.id%>/<%=answer.id%>/<%=current_user_id%>"><div class = "downvote-symbol"></div></a>
             </div>
             <div class="answer-body">
